@@ -17,6 +17,9 @@ http://localhost:8000
 # Create a Django app called 'projects'
 python manage.py startapp projects
 
+# Run django-app server
+python manage.py runserver
+
 # Register your app in settings.py
 INSTALLED_APPS = [
 	# django apps
@@ -60,3 +63,34 @@ TEMPLATES = [
 - AttributeError,
 - ValueError,
 - TemplateDoesNotExist
+
+# Create a Django Model
+class Project(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    technology = models.CharField(max_length=20)
+    image = models.CharField(max_length=100)
+
+# Add static image files to project
+# Link those image files correctly
+{% load static %}
+
+# Use the Django shell
+python manage.py shell
+
+# Create and edit data in your DB
+projects = Project.objects.all()
+p1 = projects[0]
+p1.image = 'changed/path'
+p1.save()
+
+# Query the DB from your views
+# Pass data on to your template files
+return render(request, 'template.html', {"projects: projects})
+
+# Use Django Templating Syntax
+{% code logic %}
+{{ variables }}
+
+# Apply more Bootstrap styling
+

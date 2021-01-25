@@ -1,0 +1,21 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello, Mordo!</h1>
+    {% for project in projects %}
+        <img src="{% static project.image %}" alt="screenshot of project" class="img-fluid">
+        <p>{{ project.image }}</p>
+        <h1>{{ project.title }}</h1>
+        <p>{{ project.technology}}</p>
+        <p>{{ project.description }}</p>
+    {% endfor %}
+    </body>
+</html>
